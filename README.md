@@ -1,10 +1,10 @@
 # Cluster management with Kubernetes
 
-This is a *minimal* setup of [Kubernetes](kubernetes.io) with minikube on one host.
+This is a *minimal* setup of [Kubernetes](http://kubernetes.io) with minikube on one host.
 
 If you are interested in running all the components manually (Kubernetes, [etcd](https://github.com/coreos/etcd
 ) and [flannel](https://github.com/coreos/flannel))  on multiple nodes, please refer to this [guide](README-dev.md).
- .
+
 In addition to the official documentation, if you are interested in running Kubernetes on Amazon or Google Cloud, [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) is a good read.
 
 With this tutorial, you will learn about:
