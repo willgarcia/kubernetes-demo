@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lbapp-deployment
+  labels:
+    name: weblb
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: weblb
+    spec:
+      containers:
+      - image: willgarcia/lb-app
+        name: weblb
+        env:
+        - name: VERSION
+          value: "2"
+        ports:
+        - containerPort: 9999

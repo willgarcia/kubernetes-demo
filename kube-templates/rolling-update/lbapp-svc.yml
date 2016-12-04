@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: lbapp-service
+  labels:
+    name: weblb
+spec:
+  selector:
+    name: weblb
+  ports:
+  - port: 9999
+    targetPort: 9999
+    nodePort: 30062
+    protocol: TCP
+  type: NodePort

@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: lbapp-deployment
+  labels:
+    name: weblb
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: weblb
+    spec:
+      containers:
+      - image: willgarcia/lb-app
+        name: weblb
+        env:
+          - name: VERSION
+            value: "3"
+          - name: LBAPP_DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: lbapp-db
+                key: lbapp-dbuser
+          - name: LBAPP_DB_PWD
+            valueFrom:
+              secretKeyRef:
+                name: lbapp-db
+                key: lbapp-dbpwd
+        ports:
+        - containerPort: 9999
+        livenessProbe:
+           exec:
+             command:
+               - cat
+               - /tmp/lbapp.lock
+           initialDelaySeconds: 15
+           timeoutSeconds: 1
